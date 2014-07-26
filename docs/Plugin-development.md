@@ -11,6 +11,9 @@ it is a plugin hook.
 
 All plugins need to `from util import hook` in order to be callable.
 
+.help will only show commands with a docstring. 
+
+botbot pulls from git every 15 minutes. Plugins will be auto-reloaded
 
 ## A simple example ##
 
