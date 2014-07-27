@@ -7,7 +7,7 @@ pattern = re.compile('[\W_]+')
 @hook.command
 def plus(inp, nick='', chan='', db=None):
     '''.plus <nick> -- +1 a nickname'''
-    nick = pattern.sub('', nick)
+    nick = pattern.sub('', inp)
     db.execute("create table if not exists plus"
                "(chan, nick, count default 0,"
                "primary key (chan, nick))")
@@ -16,7 +16,7 @@ def plus(inp, nick='', chan='', db=None):
     count = list(db.execute("select count from plus where nick=(?) and chan=(?)", (nick, chan)))
 
     if len(count) > 0:
-        count = int(count[0])
+        count = int(count[0][0])
         count += 1
 
         db.execute("UPDATE plus SET count=(?) WHERE nick=(?)", (count, nick))
