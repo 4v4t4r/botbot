@@ -6,7 +6,7 @@ from util import hook, http
 @hook.api_key('giphy')
 @hook.command('gif')
 @hook.command
-def giphy(inp, api_key=None):
+def giphy(inp, api_key="dc6zaTOxFJmzC"):
     '''.gif/.giphy <query> -- returns first giphy search result'''
     url = 'http://api.giphy.com/v1/gifs/search'
     try:
