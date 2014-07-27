@@ -69,7 +69,7 @@ def remember(inp, nick='', chan='', db=None):
             return 'invalid replacement syntax -- try s$foo$bar instead?'
 
     db.execute("replace into memory(chan, word, data, nick) values"
-               " (?,lower(?),?,?)", (chan, head, head + ' ' + tail, nick))
+               " (?,lower(?),?,?)", (chan, head, tail, nick))
     db.commit()
 
     if data:
