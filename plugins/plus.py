@@ -5,7 +5,7 @@ from util import hook, http
 pattern = re.compile('[\W_]+')
 
 @hook.command
-def plus(inp, nick='', db=None):
+def plus(inp, nick='', chan='', db=None):
     '''.plus <nick> -- +1 a nickname'''
     nick = pattern.sub('', nick)
     db.execute("create table if not exists plus"
@@ -13,7 +13,7 @@ def plus(inp, nick='', db=None):
                "primary key (chan, nick))")
     db.commit()
 
-    count = list(db.execute("select count from plus where nick=(?) and chan=(?)", (nick, channel)))
+    count = list(db.execute("select count from plus where nick=(?) and chan=(?)", (nick, chan)))
 
     if len(count) > 0:
         count = int(count[0])
@@ -23,7 +23,7 @@ def plus(inp, nick='', db=None):
         db.commit()
     else:
         count = 1
-        db.execute("INSERT or fail INTO plus (chan, nick, count) VALUES (?,?,?)", (channel, nick, count))
+        db.execute("INSERT or fail INTO plus (chan, nick, count) VALUES (?,?,?)", (chan, nick, count))
         db.commit()
 
     return "{0} has {1} plusses".format(nick, count)
