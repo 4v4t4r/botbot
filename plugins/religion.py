@@ -2,6 +2,7 @@ from util import hook, http
 
 
 @hook.command('god')
+@hook.command('jesus')
 @hook.command
 def bible(inp):
     ".bible <passage> -- gets <passage> from the Bible (ESV)"
