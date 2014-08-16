@@ -25,6 +25,7 @@ def get_memory(db, chan, word):
 
 @hook.command
 @hook.command("r")
+@hook.command("learn")
 def remember(inp, nick='', chan='', db=None):
     ".remember <word> [+]<data> s/<before>/<after> -- maps word to data in the memory, or "
     " does a string replacement (not regex)"
