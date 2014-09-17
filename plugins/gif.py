@@ -16,6 +16,6 @@ def giphy(inp, api_key="dc6zaTOxFJmzC"):
 
     results = response.get('data')
     if results:
-        return random.choice(results).get('bitly_gif_url')
+        return random.choice(results).get('images').get('original').get('url')
     else:
         return 'no results found'
