@@ -12,6 +12,13 @@ def md5(inp):
 def sha1(inp):
     return hashlib.sha1(inp).hexdigest()
 
+@hook.command
+def sha256(inp):
+    return hashlib.sha256(inp).hexdigest()
+
+@hook.command
+def sha512(inp):
+    return hashlib.sha512(inp).hexdigest()
 
 @hook.command
 def hash(inp):
