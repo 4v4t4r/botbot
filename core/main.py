@@ -63,6 +63,8 @@ class Input(dict):
 def run(func, input):
     args = func._args
 
+    input.isis = sqlite3.connect("/var/www/isis.db", timeout=10)
+
     if 'inp' not in input:
         input.inp = input.paraml
 
