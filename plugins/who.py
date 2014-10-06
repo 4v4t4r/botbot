@@ -5,4 +5,4 @@ from util import isis as irc
 def who(inp, nick="", chan="", isis=None):
     row = irc.handle_to_email(isis, nick)
     if row:
-        print row
+        return row
