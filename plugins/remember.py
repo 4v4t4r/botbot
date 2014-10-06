@@ -15,7 +15,7 @@ def db_init(db):
 
 def get_memory(db, chan, word):
     row = db.execute("select data from memory where chan=? and word=lower(?)", (chan, word)).fetchall()
-    if row > 0:
+    if len(row) > 0:
         return random.choice(row)[0]
     else:
         return None
