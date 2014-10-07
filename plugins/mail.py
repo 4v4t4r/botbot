@@ -105,16 +105,20 @@ def mail(inp, nick="", chan="", isis=None, api_key=None):
 
         text = """From: botbot <botbot@isis.poly.edu>
 To: <{0}>
-Subject: New IRC message from {1}
+Subject: New IRC message from {1} in {3}
 
 You have a new message from {1}:
 
 {2}
-""".format(addr, nick, msg)
+""".format(addr, nick, msg, chan)
 
         sender = "botbot@isis.poly.edu"
         recv = [addr]
-        mail.sendmail(sender, recv, text)
+        try:
+            mail.sendmail(sender, recv, text)
+            return "Sent"
+        except:
+            return "Something went wrong..."
     else:
         return "I don't have their email address"
 
